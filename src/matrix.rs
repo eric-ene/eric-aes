@@ -43,10 +43,10 @@ impl GfMul for u8 {
       1 => self,
       2 => self.gf_mul_2(),
       3 => self.gf_mul_3(),
-      0x09 => self.gf_mul_2().gf_mul_2().gf_mul_2() ^ self,
-      0x0B => (self.gf_mul_2().gf_mul_2() ^ self).gf_mul_2() ^ self,
-      0x0D => (self.gf_mul_2() ^ self).gf_mul_2().gf_mul_2() ^ self,
-      0x0E => ((self.gf_mul_2() ^ self).gf_mul_2() ^ self).gf_mul_2(),
+      9 => self.gf_mul_2().gf_mul_2().gf_mul_2() ^ self,
+      11 => (self.gf_mul_2().gf_mul_2() ^ self).gf_mul_2() ^ self,
+      13 => (self.gf_mul_2() ^ self).gf_mul_2().gf_mul_2() ^ self,
+      14 => ((self.gf_mul_2() ^ self).gf_mul_2() ^ self).gf_mul_2(),
       _ => 0
     }
   }

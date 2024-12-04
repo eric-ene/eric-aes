@@ -98,11 +98,11 @@ pub fn schedule(key: &Vec<u8>) -> Vec<Vec<u8>> {
   const N: usize = 4;
   const R: usize = 11;
 
-  let mut w = [0u32; 4*R];
+  let mut w = [0u32; N*R];
 
   let k = condense(key);
 
-  for i in 0..(4 * R) {
+  for i in 0..(N * R) {
     if i < N {
       w[i] = k[i];
       continue;

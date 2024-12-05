@@ -41,12 +41,12 @@ impl GfMul for u8 {
   fn gf_mul(self, rhs: Self) -> Self {
     match rhs {
       1 => self,
-      2 => self.gf_mul_2(),
-      3 => self.gf_mul_3(),
-      9 => self.gf_mul_2().gf_mul_2().gf_mul_2() ^ self,
-      11 => (self.gf_mul_2().gf_mul_2() ^ self).gf_mul_2() ^ self,
-      13 => (self.gf_mul_2() ^ self).gf_mul_2().gf_mul_2() ^ self,
-      14 => ((self.gf_mul_2() ^ self).gf_mul_2() ^ self).gf_mul_2(),
+      2 => self.gf_mul_2(), // x * 2
+      3 => self.gf_mul_3(), // x * 3
+      9 => self.gf_mul_2().gf_mul_2().gf_mul_2() ^ self, // (((x * 2) * 2) * 2) ^ x
+      11 => (self.gf_mul_2().gf_mul_2() ^ self).gf_mul_2() ^ self, // ((((x * 2) * 2) xor x) * 2) xor x
+      13 => (self.gf_mul_2() ^ self).gf_mul_2().gf_mul_2() ^ self, // ((((x * 2) xor x) * 2) * 2) xor x
+      14 => ((self.gf_mul_2() ^ self).gf_mul_2() ^ self).gf_mul_2(), // ((((x * 2) xor x) * 2) xor x) * 2
       _ => 0
     }
   }
